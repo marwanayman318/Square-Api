@@ -1,0 +1,12 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Full Test Suite">
+    <test name="Run All Tests">
+        <packages>
+            <package name="catalog.tests"/>
+            <package name="checkout.tests"/>
+            <package name="customer.tests"/>
+            <package name="refunds.tests"/>
+            <package name="payments.tests"/>
+        </packages>
+    </test>
+</suite>
