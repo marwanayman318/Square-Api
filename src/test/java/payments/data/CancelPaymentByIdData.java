@@ -8,7 +8,7 @@ import java.util.UUID;
 
 import static Helper.CreatePaymentHelper.createPayment;
 
-public class PaymentData {
+public class cancelPaymentByIdData {
     @DataProvider(name = "cancelPaymentByIdData")
     public Object[][] cancelPaymentByIdData() {
         return new Object[][]{

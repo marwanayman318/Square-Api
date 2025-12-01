@@ -5,14 +5,14 @@ import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import services.GETService;
 import services.POSTService;
-import refunds.data.RefundData;
+import refunds.data.createRefundData;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class RefundTest extends RefundData {
+public class RefundTest extends createRefundData {
 
     @Epic("Refund API")
     @Feature("Create Refund")

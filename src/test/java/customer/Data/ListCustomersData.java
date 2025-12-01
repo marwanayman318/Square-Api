@@ -6,7 +6,7 @@ import org.testng.annotations.DataProvider;
 
 import java.util.List;
 
-public class CustomerData {
+public class ListCustomersData {
 
     @DataProvider(name = "listCustomersData")
     public Object[][] listCustomersData() {

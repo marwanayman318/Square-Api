@@ -1,6 +1,6 @@
 package catalog.tests;
 
-import catalog.Data.CatalogData;
+import catalog.Data.CreateCatalogObjectData;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import io.restassured.response.Response;
@@ -11,7 +11,7 @@ import services.GETService;
 import services.POSTService;
 import services.PUTService;
 
-public class CatalogTest extends CatalogData {
+public class CatalogTest extends CreateCatalogObjectData {
 
     public static String itemId;
 

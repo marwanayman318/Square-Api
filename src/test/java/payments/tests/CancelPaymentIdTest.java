@@ -7,7 +7,7 @@ import POJOS.createPayment.money;
 import POJOS.listPayment.listPaymentRequests;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
-import payments.data.PaymentData;
+import payments.data.CancelPaymentByIdData;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -19,7 +19,7 @@ import utilities.Config;
 import java.util.List;
 import java.util.UUID;
 
-public class PaymentIdTest extends PaymentData {
+public class PaymentIdTest extends CancelPaymentByIdData {
 
     @Epic("Payments API")
     @Feature("Cancel Payment By Id")
