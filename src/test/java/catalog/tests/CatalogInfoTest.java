@@ -1,0 +1,39 @@
+package catalog.tests;
+
+import io.qameta.allure.Epic;
+import io.qameta.allure.Feature;
+import io.restassured.response.Response;
+import org.testng.Assert;
+import org.testng.annotations.Test;
+import services.GETService;
+
+public class CatalogInfoTest extends catalog.Data.CatalogInfoData {
+
+    @Epic("Catalog API")
+    @Feature("List Catalog Info")
+    @Test(dataProvider = "catalogInfoData")
+    public void catalogInfoTest(String testName ,String token, int expectedStatus, boolean expectSuccess) {
+
+        System.out.println("Running: " + testName);
+
+        String endpoint1 = "/catalog/info";
+
+        Response res = GETService.listWithToken(endpoint1,expectedStatus,token);
+        res.prettyPrint();
+
+        Assert.assertEquals(res.getStatusCode(), expectedStatus);
+
+        if (expectSuccess) {
+            Assert.assertTrue(res.getBody().asString().contains("\"limits\""),
+                    "Expected 'limits' field missing from response");
+
+        } else {
+            String detail = res.jsonPath().getString("errors[0].detail");
+            Assert.assertNotNull(detail, "Error detail should not be null");
+
+            System.out.println(testName + "Correct error returned: " + detail);
+        }
+
+        System.out.println();
+    }
+}

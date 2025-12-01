@@ -3,16 +3,16 @@ package refunds.tests;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import services.GETService;
-import refunds.data.GetRefundsData;
+import refunds.data.GetRefundData;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class ListRefundsByIdTest extends GetRefundsData {
+public class ListRefundsByIdTest extends GetRefundData {
 
     @Epic("Refund API")
     @Feature("List Refund By Id")
-    @Test(dataProvider = "getRefundData")
+    @Test(dataProvider = "GetRefundData")
     public void getRefundById(String testName, String refundId, int expectedStatus, boolean expectValid) {
         System.out.println("Running: " + testName);
 

@@ -6,8 +6,8 @@ import org.testng.annotations.DataProvider;
 
 import java.util.UUID;
 
-public class RefundData {
-    @DataProvider(name = "createRefundData")
+public class CreateRefundData {
+    @DataProvider(name = "CreateRefundData")
     public Object[][] createRefundData() {
 
         String idempotencyKey = UUID.randomUUID().toString();
@@ -61,51 +61,6 @@ public class RefundData {
         };
     }
 
-    @DataProvider(name = "getRefundData")
-    public Object[][] getRefundData() {
-        return new Object[][]{
-                {
-                        "Create_TC_010 - Retrieve valid refund",
-                        "fx1w3eSfPfhHoAqR0dJevcq6K9TZY_87uPs8iKpVIYjTHZ8fhGtEBiREwNUnVktTA9T722L0O", // ✅ Valid refund ID
-                        200,
-                        true
-                },
-                {
-                        "Create_TC_011 - Retrieve invalid refund",
-                        "fx1w3eSfPfhHoAqR0dJevcq6K9TZY_87uPs8iKpVIYjTHZ8fhGtEBiREwNUnVktTA9T722L0o", // ❌ Invalid refund ID (note lowercase 'o' at end)
-                        404,
-                        false
-                }
-        };
-    }
 
-    @DataProvider(name = "listRefundsData")
-    public Object[][] listRefundsData() {
-        return new Object[][]{
-                {
-                        "List_TC_001 - Get all refunds",
-                        null,
-                        200,
-                        true // Expect refunds array
-                },
-                {
-                        "List_TC_002 - Verify refund transitions",
-                        null,
-                        200,
-                        true
-                },
-                {
-                        "List_TC_003 - Filter refunds by date range",
-                        "?begin_time=2025-11-06T00:00:00Z&end_time=2025-11-07T23:59:59Z",
-                        200,
-                        true
-                },
-                {
-                        "List_TC_004 - Invalid query parameter",
-                        "?status=INVALID_STATUS",
-                        400,
-                        false
-                }
-        };
-    }
+
 }

@@ -3,14 +3,14 @@ package refunds.tests;
 import io.qameta.allure.Epic;
 import io.qameta.allure.Feature;
 import services.GETService;
-import refunds.data.ListRefundData;
+import refunds.data.ListRefundsData;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import java.util.List;
 
-public class ListRefundsTest extends ListRefundData {
+public class ListRefundsTest extends ListRefundsData {
 
     @Epic("Refund API")
     @Feature("List Refund")
