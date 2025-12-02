@@ -9,10 +9,10 @@ import org.testng.annotations.Test;
 import payments.data.CancelPaymentData;
 import services.POSTService;
 
-
+@Epic("Payments API")
+@Feature("Cancel Payment")
 public class CancelPaymentTest extends CancelPaymentData {
-    @Epic("Payments API")
-    @Feature("Cancel Payment")
+
     @Test(dataProvider = "CancelPaymentData")
     public void CancelPaymentTests (String testName, CancelPaymentRequest request, int expectedStatus, String expectedPaymentStatus) {
         System.out.println("Running: " + testName);

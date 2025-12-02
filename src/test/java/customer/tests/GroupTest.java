@@ -9,9 +9,10 @@ import org.testng.annotations.Test;
 import services.DELETEService;
 import services.PUTService;
 
+@Epic("Customer API")
+@Feature(" Create Customer Group")
 public class GroupTest extends GroupData {
-    @Epic("Customer API")
-    @Feature(" Create Customer Group")
+
     @Test(dataProvider = "groupData")
     public void groupOperations(String testName, String custid, String groupId, int expectedStatus, boolean expectSuccess) {
         System.out.println("Running: " + testName);
@@ -26,5 +27,10 @@ public class GroupTest extends GroupData {
             res = DELETEService.delete(endpoint,expectedStatus);
         }
         res.prettyPrint();
-        Assert.assertEquals(res.getStatusCode(), expectedStatus);
+        if (expectSuccess) {
+            Assert.assertTrue(res.getBody().asString().contains("{}"));
+        }
+        else {
+            Assert.assertTrue(res.getBody().asString().contains("error"));
+        }
     }}

@@ -7,9 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.DELETEService;
 
+@Epic("Customer API")
+@Feature("Delete Customer")
 public class DeleteCustomerTest extends customer.Data.DeleteCustomerData {
-    @Epic("Customer API")
-    @Feature("Delete Customer")
+
     @Test(dataProvider = "deleteCustomerData")
     public void deleteCustomer(String testName, Object custid, int expectedStatus, boolean expectSuccess) {
         System.out.println("Running: " + testName);
@@ -17,6 +18,12 @@ public class DeleteCustomerTest extends customer.Data.DeleteCustomerData {
         String endpoint = "/customers/" + custid;
         Response res = DELETEService.delete(endpoint,expectedStatus);
         res.prettyPrint();
-        Assert.assertEquals(res.getStatusCode(), expectedStatus);
+
+        if (expectSuccess) {
+            Assert.assertTrue(res.getBody().asString().contains("{}"));
+        }
+        else {
+            Assert.assertTrue(res.getBody().asString().contains("error"));
+        }
     }
 }

@@ -10,7 +10,7 @@ import static Helper.CreatePaymentHelper.createPayment;
 public class UpdatePaymentsData {
     @DataProvider(name = "updatePaymentsData")
     public Object[][] updatePaymentsData() {
-        String paymentId1 = createPayment(1000,"USD","cnon:card-nonce-ok");
+        String paymentId1 = createPayment(1000,"USD","cnon:card-nonce-ok",false);
         return new Object[][]{
                 {
                         "Update_TC_018 - Update approved payment",

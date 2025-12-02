@@ -7,10 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.PUTService;
 
+@Epic("CheckOut API")
+@Feature("Update Merchant Settings ")
 public class UpdateMerchantSettingsTest extends checkout.Data.UpdateMerchantSettingsData {
-    //UpdateMerchantSettingsTest
-    @Epic("CheckOut API")
-    @Feature("Update Merchant Settings ")
+
     @Test(dataProvider = "updateMerchantSettingsData")
     public void updateMerchantSettingsTest(String testName, String body, int expectedStatus, boolean expectSuccess) {
 

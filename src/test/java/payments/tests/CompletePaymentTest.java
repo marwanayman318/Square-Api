@@ -9,9 +9,10 @@ import org.testng.annotations.Test;
 import payments.data.CompletePaymentData;
 import services.POSTService;
 
+@Epic("Payments API")
+@Feature("Complete Payment")
 public class CompletePaymentTest extends CompletePaymentData {
-    @Epic("Payments API")
-    @Feature("Complete Payment")
+
     @Test(dataProvider = "completePaymentData")
     public void completePaymentById(String testName, String paymentId, CancelPaymentRequest request, int expectedStatus, String expectedPaymentStatus) {
         System.out.println("Running: " + testName);
@@ -26,7 +27,6 @@ public class CompletePaymentTest extends CompletePaymentData {
             Assert.assertEquals(status, expectedPaymentStatus, "Payment status mismatch!");
             System.out.println(testName + "Payment completed successfully. Status: " + status);
         } else {
-            Assert.assertTrue(res.getBody().asString().contains("errors"), "Expected error not found!");
             String errorMessage = res.jsonPath().getString("errors[0].detail");
             Assert.assertTrue(errorMessage.contains("invalid for the requested operation"),
                     "Unexpected error message for canceled payment completion.");

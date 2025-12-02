@@ -8,11 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.POSTService;
 
-
+@Epic("CheckOut API")
+@Feature("Create Payment Link")
 public class CheckoutTest extends CreatePaymentLinkData {
 
-    @Epic("CheckOut API")
-    @Feature("Create Payment Link")
     @Test(dataProvider = "createPaymentLinkData")
     public void createPaymentLinkTest(String testName, String endpoint, String body, int expectedStatus, boolean expectSuccess) {
 
@@ -31,7 +30,6 @@ public class CheckoutTest extends CreatePaymentLinkData {
             System.out.println(testName + "Link created successfully.");
         } else {
             String error = res.jsonPath().getString("errors[0].detail");
-            Assert.assertNotNull(error, "Expected error message but none returned.");
             System.out.println(testName + "Correct error received: " + error);
         }
 

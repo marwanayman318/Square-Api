@@ -7,10 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.GETService;
 
+@Epic("CheckOut API")
+@Feature("Retrieve Payment Link")
 public class RetrievePaymentLinkTest extends checkout.Data.RetrievePaymentLinkData {
-    //RetrievePaymentLinkTest
-    @Epic("CheckOut API")
-    @Feature("Retrieve Payment Link")
+
     @Test(dataProvider = "retrievePaymentLinkData")
     public void retrievePaymentLinkTest(String testName, String paymentLinkId, int expectedStatus, boolean expectSuccess) {
 
@@ -27,7 +27,6 @@ public class RetrievePaymentLinkTest extends checkout.Data.RetrievePaymentLinkDa
 
             Assert.assertTrue(res.getBody().asString().contains("payment_link"),
                     "Expected payment_link object but not found");
-
             System.out.println(testName + "Payment link successfully retrieved.");
 
         } else {

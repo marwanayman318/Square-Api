@@ -9,9 +9,10 @@ import org.testng.annotations.Test;
 import payments.data.UpdatePaymentsData;
 import services.PUTService;
 
+@Epic("Payments API")
+@Feature("Update Payment")
 public class UpdatePaymentsTest extends UpdatePaymentsData {
-    @Epic("Payments API")
-    @Feature("Update Payment")
+
     @Test(dataProvider = "updatePaymentsData")
     public void updatePaymentTest(String testName, String paymentId, UpdatePayment request, int expectedStatus, boolean isSuccessExpected) {
         System.out.println("Running: " + testName);

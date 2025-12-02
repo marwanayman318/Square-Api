@@ -7,10 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.GETService;
 
+@Epic("CheckOut API")
+@Feature("Retrieve Merchant Settings ")
 public class RetrieveMerchantSettingsTest extends checkout.Data.RetrieveMerchantSettingsData {
-    //RetrieveMerchantSettingsTest
-    @Epic("CheckOut API")
-    @Feature("Retrieve Merchant Settings ")
+
     @Test(dataProvider = "retrieveMerchantSettingsData")
     public void retrieveMerchantSettingsTest(String testName, int expectedStatus, boolean expectSuccess, String tokenType) {
 

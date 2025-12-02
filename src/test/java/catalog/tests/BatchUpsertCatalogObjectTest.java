@@ -8,9 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.POSTService;
 
+@Epic("Catalog API")
+@Feature("Batch Upsert Catalog Object")
 public class BatchUpsertCatalogObjectTest extends BatchUpsertCatalogObjectData {
-    @Epic("Catalog API")
-    @Feature("Batch Upsert Catalog Object")
+
     @Test(dataProvider = "batchUpsertCatalogObjectData")
     public void batchUpsertCatalogObjectTest(String testName, Object body, int expectedStatus, boolean expectSuccess) {
 

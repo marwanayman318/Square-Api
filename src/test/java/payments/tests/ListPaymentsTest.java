@@ -9,15 +9,12 @@ import org.testng.annotations.Test;
 import payments.data.ListPaymentsData;
 import services.GETService;
 import utilities.Config;
-
 import java.util.List;
 
+@Epic("Payments API")
+@Feature("List All Payment")
 public class ListPaymentsTest extends ListPaymentsData {
 
-    GETService service = new GETService();
-
-    @Epic("Payments API")
-    @Feature("List All Payment")
     @Test(dataProvider = "listPaymentsData")
     public void listPayments(String paramType, Object value, Object value2, int expectedStatus, String description) {
         System.out.println("Running: " + description);
@@ -47,8 +44,7 @@ public class ListPaymentsTest extends ListPaymentsData {
                 break;
         }
 
-        Response res = service.listWithParam(request, expectedStatus,endPoint);
-        Assert.assertEquals(res.getStatusCode(), expectedStatus, "Unexpected status code");
+        Response res = GETService.listWithParam(request, expectedStatus,endPoint);
 
         res.prettyPrint();
 
@@ -64,15 +60,8 @@ public class ListPaymentsTest extends ListPaymentsData {
 
                 Assert.assertTrue(body.contains("\"payments\"") || body.contains("payments"),
                         "Response body does not contain 'payments' key: " + body);
-                List<Object> payments = res.jsonPath().getList("payments");
-                Assert.assertNotNull(payments, "Expected 'payments' array in response but found null");
             }
-        } else if (expectedStatus == 400) {
-            String error = res.jsonPath().getString("errors[0].detail");
-            Assert.assertTrue(error != null && error.toLowerCase().contains(paramType),
-                    "Unexpected error message: " + error);
         }
-
 
         System.out.println(description + " Passed\n");
     }

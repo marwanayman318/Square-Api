@@ -11,11 +11,11 @@ public class PaymentRequest {
 
     public PaymentRequest() {}
 
-    public PaymentRequest(String idempotencyKey, String sourceId, money amountMoney) {
+    public PaymentRequest(String idempotencyKey, String sourceId, money amountMoney, boolean autocomplete) {
         this.idempotency_key = idempotencyKey;
         this.source_id = sourceId;
         this.amount_money = amountMoney;
-        this.autocomplete = false;
+        this.autocomplete = autocomplete;
     }
 
     public String getIdempotency_key() {
@@ -46,7 +46,13 @@ public class PaymentRequest {
 
         this.source_id = source_id;
     }
+    public boolean isAutocomplete() {
+        return autocomplete;
+    }
 
+    public void setAutocomplete(boolean autocomplete) {
+        this.autocomplete = autocomplete;
+    }
 
     public String getPayment_id() {
         return payment_id;

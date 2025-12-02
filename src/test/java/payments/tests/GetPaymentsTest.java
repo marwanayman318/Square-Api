@@ -8,9 +8,10 @@ import org.testng.annotations.Test;
 import payments.data.GetPaymentsData;
 import services.GETService;
 
+@Epic("Payments API")
+@Feature("List Payment By Id")
 public class GetPaymentsTest extends GetPaymentsData {
-    @Epic("Payments API")
-    @Feature("List Payment By Id")
+
     @Test(dataProvider = "getPaymentsData")
     public void getPaymentByIdTest(String testName, String paymentId, int expectedStatus, boolean isValid) {
         System.out.println("Running: " + testName);

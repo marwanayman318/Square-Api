@@ -8,10 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.GETService;
 
+@Epic("CheckOut API")
+@Feature("Retrieve Location Settings ")
 public class RetrieveLocationSettingsTest extends LocationSettingsData{
-    //RetrieveLocationSettingsTest
-    @Epic("CheckOut API")
-    @Feature("Retrieve Location Settings ")
+
     @Test(dataProvider = "locationSettingsData")
     public void getLocationSettingsTest(String testName, String locationId, int expectedStatus, boolean expectSuccess) {
         System.out.println("Running: " + testName + " (locationId=" + locationId + ")");

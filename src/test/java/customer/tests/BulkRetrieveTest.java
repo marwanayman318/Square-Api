@@ -8,9 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.POSTService;
 
+@Epic("Customer API")
+@Feature("Bulk Retrieve Customer")
 public class BulkRetrieveTest extends BulkRetrieveData {
-    @Epic("Customer API")
-    @Feature("Bulk Retrieve Customer")
+
     @Test(dataProvider = "bulkRetrieveData")
     public void bulkRetrieve(String testName, String body, int expectedStatus, boolean expectSuccess) {
         System.out.println("Running: " + testName);
@@ -20,6 +21,13 @@ public class BulkRetrieveTest extends BulkRetrieveData {
         Response res = POSTService.create(endpoint, body, expectedStatus);
         res.prettyPrint();
         Assert.assertEquals(res.getStatusCode(), expectedStatus);
+
+        if (expectSuccess) {
+            Assert.assertTrue(res.getBody().asString().contains("responses"));
+        }
+        else {
+            Assert.assertTrue(res.getBody().asString().contains("error"));
+        }
 
     }
 }

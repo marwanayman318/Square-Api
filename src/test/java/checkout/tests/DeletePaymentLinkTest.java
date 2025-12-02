@@ -8,10 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.DELETEService;
 
+@Epic("CheckOut API")
+@Feature("Delete Payment Link")
 public class DeletePaymentLinkTest extends DeletePaymentLinkData {
-    //DeletePaymentLinkTest
-    @Epic("CheckOut API")
-    @Feature("Delete Payment Link")
+
     @Test(dataProvider = "deletePaymentLinkData")
     public void deletePaymentLinkTest(String testName, String paymentLinkId, int expectedStatus, boolean expectSuccess) {
 

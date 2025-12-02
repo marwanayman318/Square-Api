@@ -10,14 +10,14 @@ public class CompletePaymentData {
     public Object[][] completePaymentData() {
         return new Object[][]{
                 {
-                        "Complete_TC_022 - Complete Approved Payment",
+                        "TC_Payment_022",
                         "f7MhX4mPdLwbF2vibm6Fm0RsbFAZY",
                         new CancelPaymentRequest(UUID.randomUUID().toString()),
                         200,
                         "COMPLETED"
                 },
                 {
-                        "Complete_TC_023 - Complete Canceled Payment",
+                        "TC_Payment_023",
                         "VW07oXYkp7NcZ76xyCB2MphAhnRZY",
                         new CancelPaymentRequest(UUID.randomUUID().toString()),
                         400,

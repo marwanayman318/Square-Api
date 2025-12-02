@@ -7,9 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.PUTService;
 
+@Epic("Customer API")
+@Feature("Update Customer")
 public class UpdateCustomerTest extends customer.Data.UpdateCustomerData {
-    @Epic("Customer API")
-    @Feature("Update Customer")
+
     @Test(dataProvider = "updateCustomerData")
     public void updateCustomer(String testName, String custid, Object body ,int expectedStatus, boolean expectSuccess) {
         System.out.println("Running: " + testName);
@@ -17,6 +18,12 @@ public class UpdateCustomerTest extends customer.Data.UpdateCustomerData {
         String endpoint = "/customers/" + custid;
         Response res = PUTService.updatePayment(endpoint, body,expectedStatus);
         res.prettyPrint();
-        Assert.assertEquals(res.getStatusCode(), expectedStatus);
+
+        if (expectSuccess) {
+            Assert.assertTrue(res.getBody().asString().contains("customer"));
+        }
+        else {
+            Assert.assertTrue(res.getBody().asString().contains("error"));
+        }
     }
 }

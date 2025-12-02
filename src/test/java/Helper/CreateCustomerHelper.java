@@ -9,7 +9,6 @@ import java.util.List;
 
 public class CreateCustomerHelper {
 
-    //Creates a new customer and returns its customer_id.
     public static String createCustomerId() {
         // Build request body
         CustomerRequest request = new CustomerRequest();
@@ -20,8 +19,6 @@ public class CreateCustomerHelper {
         Response response = POSTService.create(endpoint,request,200);
         return response.jsonPath().getString("customer.id");
     }
-
-    //Creates multiple customer IDs
 
     public static List<String> createCustomerIds(int count) {
         List<String> ids = new ArrayList<>();

@@ -8,9 +8,10 @@ import org.testng.annotations.Test;
 import services.POSTService;
 import services.PUTService;
 
+@Epic("Catalog API")
+@Feature("Create Catalog Image")
 public class CreateUpdateCatalogImageTest extends catalog.Data.CreateCatalogImageData {
-    @Epic("Catalog API")
-    @Feature("Create Catalog Image")
+
     @Test(dataProvider = "createCatalogImageData")
     public static void createCatalogImageTest(String testName , String path , String body, int expectedStatus, boolean expectSuccess) {
 
@@ -30,14 +31,12 @@ public class CreateUpdateCatalogImageTest extends catalog.Data.CreateCatalogImag
         } else {
             String detail = res.jsonPath().getString("errors[0].detail");
             Assert.assertNotNull(detail, "Error detail should not be null");
-
             System.out.println(testName + "Correct error returned: " + detail);
         }
 
         System.out.println();
     }
-    @Epic("Catalog API")
-    @Feature("Update Catalog Image")
+
     @Test(dataProvider = "updateCatalogImageData", dependsOnMethods = "createCatalogImageTest")
     public void updateCatalogImageTest(String testName ,String imageId ,String path ,String body,int expectedStatus, boolean expectSuccess) {
 
@@ -57,7 +56,6 @@ public class CreateUpdateCatalogImageTest extends catalog.Data.CreateCatalogImag
         } else {
             String detail = res.jsonPath().getString("errors[0].detail");
             Assert.assertNotNull(detail, "Error detail should not be null");
-
             System.out.println(testName + "Correct error returned: " + detail);
         }
 

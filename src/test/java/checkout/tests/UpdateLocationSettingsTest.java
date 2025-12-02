@@ -7,11 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.PUTService;
 
+@Epic("CheckOut API")
+@Feature("Update Location Settings ")
 public class UpdateLocationSettingsTest extends checkout.Data.UpdateLocationSettingsData {
 
-    //UpdateLocationSettingsTest
-    @Epic("CheckOut API")
-    @Feature("Update Location Settings ")
     @Test(dataProvider = "updateLocationSettingsData")
     public void updateLocationSettingsTest(String testName, String locationId, String body, int expectedStatus, boolean expectSuccess) {
 

@@ -7,10 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.POSTService;
 
+@Epic("Catalog API")
+@Feature("Search Catalog Object")
 public class SearchCatalogObjectsTest extends catalog.Data.SearchCatalogObjectsData {
 
-    @Epic("Catalog API")
-    @Feature("Search Catalog Object")
     @Test(dataProvider = "searchCatalogObjectsData")
     public void searchCatalogObjectsTest(String testName ,String body, int expectedStatus, boolean expectSuccess) {
 

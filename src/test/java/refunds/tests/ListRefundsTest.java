@@ -7,13 +7,12 @@ import refunds.data.ListRefundsData;
 import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
 import java.util.List;
 
+@Epic("Refund API")
+@Feature("List Refund")
 public class ListRefundsTest extends ListRefundsData {
 
-    @Epic("Refund API")
-    @Feature("List Refund")
     @Test(dataProvider = "listRefundsData")
     public void listRefunds(String testName, String queryParams, int expectedStatus, boolean expectRefunds) {
         System.out.println("Running: " + testName);

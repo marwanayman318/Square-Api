@@ -11,10 +11,10 @@ import static io.restassured.RestAssured.given;
 
 public class CreatePaymentHelper {
 
-    public static String createPayment(int amount, String currency, String sourceId) {
+    public static String createPayment(int amount, String currency, String sourceId, boolean autocomplete) {
 
         try {
-            PaymentRequest body = new PaymentRequest(UUID.randomUUID().toString(), sourceId, new money(amount, currency));
+            PaymentRequest body = new PaymentRequest(UUID.randomUUID().toString(), sourceId, new money(amount, currency),autocomplete);
 
             Response res = given()
                     .baseUri(Config.BASE_URL)

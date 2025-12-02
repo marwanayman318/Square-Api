@@ -8,13 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.POSTService;
 
-
+@Epic("Catalog API")
+@Feature("Create Catalog Object")
 public class CreateCatalogObjectTest extends CreateCatalogObjectData {
 
-    public static String itemId;
-
-    @Epic("Catalog API")
-    @Feature("Create Catalog Object")
     @Test(dataProvider = "createCatalogObjectData")
     public void createCatalogObjectTest(String testName, Object body, int expectedStatus, boolean expectSuccess) {
 
@@ -34,12 +31,10 @@ public class CreateCatalogObjectTest extends CreateCatalogObjectData {
         } else {
             String detail = res.jsonPath().getString("errors[0].detail");
             Assert.assertNotNull(detail, "Error detail should not be null");
-
             System.out.println(testName + "Correct error returned: " + detail);
         }
 
         System.out.println();
-        itemId = res.jsonPath().getString("catalog_object.id");
     }
 
 

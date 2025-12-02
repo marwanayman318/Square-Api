@@ -9,26 +9,26 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import payments.data.PaymentsData;
 import services.POSTService;
-
 import java.util.UUID;
 
+@Epic("Payments API")
+@Feature("Create Payment")
 public class PaymentsTest  extends PaymentsData {
-    @Epic("Payments API")
-    @Feature("Create Payment")
+
     @Test(dataProvider = "PaymentsData")
-    public void createPayment (int amount, String currency, String sourceId, boolean autoComplete, int expectedStatus) {
+    public void createPayment (int amount, String currency, String sourceId, boolean isSuccess, int expectedStatus) {
 
         String endpoint = "/payments";
-        money money = new money(amount, currency);
-        PaymentRequest request = new PaymentRequest(UUID.randomUUID().toString(), sourceId, new money(amount, currency));
+        PaymentRequest request = new PaymentRequest(UUID.randomUUID().toString(), sourceId, new money(amount, currency),false);
 
-
-        Response res = new POSTService().create(endpoint,request, expectedStatus);
-        Assert.assertEquals(res.statusCode(), expectedStatus);
+        Response res = POSTService.create(endpoint,request, expectedStatus);
 
         res.prettyPrint();
         if (expectedStatus == 200) {
             Assert.assertTrue(res.getBody().asString().contains("payment"));
+        }
+        else {
+            Assert.assertTrue(res.getBody().asString().contains("errors"));
         }
 
     }

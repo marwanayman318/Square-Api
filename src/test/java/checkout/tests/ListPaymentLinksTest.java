@@ -7,10 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.GETService;
 
+@Epic("CheckOut API")
+@Feature("List Payment Link")
 public class ListPaymentLinksTest extends checkout.Data.ListPaymentLinksData {
-    //ListPaymentLinksTest
-    @Epic("CheckOut API")
-    @Feature("List Payment Link")
+
     @Test(dataProvider = "listPaymentLinksData")
     public void listPaymentLinksTest(String testName, String endpoint, int expectedStatus, boolean expectSuccess) {
 

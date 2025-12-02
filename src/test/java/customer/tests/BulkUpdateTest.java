@@ -8,9 +8,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.POSTService;
 
+@Epic("Customer API")
+@Feature("Bulk Update Customer")
 public class BulkUpdateTest extends BulkUpdateData {
-    @Epic("Customer API")
-    @Feature("Bulk Update Customer")
+
     @Test(dataProvider = "bulkUpdateData")
     public void bulkUpdate(String testName, String body, int expectedStatus, boolean expectSuccess) {
         System.out.println("Running: " + testName);
@@ -20,6 +21,12 @@ public class BulkUpdateTest extends BulkUpdateData {
 
         Response res = POSTService.create(endpoint, body, expectedStatus);
         res.prettyPrint();
-        Assert.assertEquals(res.getStatusCode(), expectedStatus);
+
+        if (expectSuccess) {
+            Assert.assertTrue(res.getBody().asString().contains("responses"));
+        }
+        else {
+            Assert.assertTrue(res.getBody().asString().contains("error"));
+        }
     }
 }

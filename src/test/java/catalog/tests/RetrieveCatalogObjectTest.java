@@ -7,9 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.GETService;
 
+@Epic("Catalog API")
+@Feature("Retrieve Catalog Object")
 public class RetrieveCatalogObjectTest extends catalog.Data.RetrieveCatalogObjectData {
-    @Epic("Catalog API")
-    @Feature("Retrieve Catalog Object")
+
     @Test(dataProvider = "retrieveCatalogObjectData")
     public void retrieveCatalogObjectTest(String testName, String orderId, int expectedStatus, boolean expectSuccess) {
 

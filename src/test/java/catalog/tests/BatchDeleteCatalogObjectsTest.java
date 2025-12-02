@@ -7,9 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.POSTService;
 
+@Epic("Catalog API")
+@Feature("Batch Delete Catalog Object")
 public class BatchDeleteCatalogObjectsTest extends catalog.Data.BatchDeleteCatalogObjectsData {
-    @Epic("Catalog API")
-    @Feature("Batch Delete Catalog Object")
+
     @Test(dataProvider = "batchDeleteCatalogObjectsData")
     public void batchDeleteCatalogObjectsTest(String testName, String body,int expectedStatus, boolean expectSuccess) {
 

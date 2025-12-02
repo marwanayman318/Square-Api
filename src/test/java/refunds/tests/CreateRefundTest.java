@@ -12,10 +12,10 @@ import org.testng.annotations.Test;
 
 import java.util.List;
 
+@Epic("Refund API")
+@Feature("Create Refund")
 public class CreateRefundTest extends CreateRefundData {
 
-    @Epic("Refund API")
-    @Feature("Create Refund")
     @Test(dataProvider = "CreateRefundData")
     public void createRefund(String testName, PaymentRequest request, int expectedStatus, String expectedRefundStatus) {
         System.out.println("Running: " + testName);
@@ -27,14 +27,12 @@ public class CreateRefundTest extends CreateRefundData {
 
         if (expectedStatus == 200) {
             String actualStatus = res.jsonPath().getString("refund.status");
-            Assert.assertNotNull(actualStatus, "Refund status should not be null");
             Assert.assertTrue(actualStatus.equalsIgnoreCase("COMPLETED") ||
                             actualStatus.equalsIgnoreCase("PENDING"),
                     "Refund status should be COMPLETED or PENDING");
             System.out.println(testName + "Refund created successfully. Status: " + actualStatus);
         } else {
-            Assert.assertTrue(res.asString().contains("errors") || res.asString().contains("error"),
-                    "Expected error response missing.");
+            Assert.assertTrue(res.asString().contains("errors"));
             System.out.println(testName + "Expected error occurred. Status: " + expectedStatus);
         }
 

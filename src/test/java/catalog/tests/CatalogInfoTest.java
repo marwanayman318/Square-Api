@@ -7,10 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.GETService;
 
+@Epic("Catalog API")
+@Feature("List Catalog Info")
 public class CatalogInfoTest extends catalog.Data.CatalogInfoData {
 
-    @Epic("Catalog API")
-    @Feature("List Catalog Info")
     @Test(dataProvider = "catalogInfoData")
     public void catalogInfoTest(String testName ,String token, int expectedStatus, boolean expectSuccess) {
 

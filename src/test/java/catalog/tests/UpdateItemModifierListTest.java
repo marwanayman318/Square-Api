@@ -7,10 +7,10 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 import services.POSTService;
 
+@Epic("Catalog API")
+@Feature("Update Item Modifier List")
 public class UpdateItemModifierListTest extends catalog.Data.UpdateItemModifierListData {
 
-    @Epic("Catalog API")
-    @Feature("Update Item Modifier List")
     @Test(dataProvider = "updateItemModifierListData")
     public void updateItemModifierListTest(String testName ,String body ,int expectedStatus, boolean expectSuccess) {
 

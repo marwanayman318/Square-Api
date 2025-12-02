@@ -8,10 +8,10 @@ import io.restassured.response.Response;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
+@Epic("Refund API")
+@Feature("List Refund By Id")
 public class ListRefundsByIdTest extends GetRefundData {
 
-    @Epic("Refund API")
-    @Feature("List Refund By Id")
     @Test(dataProvider = "GetRefundData")
     public void getRefundById(String testName, String refundId, int expectedStatus, boolean expectValid) {
         System.out.println("Running: " + testName);
@@ -34,7 +34,7 @@ public class ListRefundsByIdTest extends GetRefundData {
             String errorMsg = res.jsonPath().getString("errors[0].detail");
             Assert.assertTrue(errorMsg.contains("Could not find refund with id"),
                     "Expected error message not found in response.");
-            System.out.println("✅ " + testName + " — Expected error occurred for invalid refund_id.");
+            System.out.println(testName + "Expected error occurred for invalid refund_id.");
         }
 
         System.out.println();
